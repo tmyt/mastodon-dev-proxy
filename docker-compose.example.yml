@@ -1,0 +1,13 @@
+version: '3'
+services:
+  dev-proxy:
+    build: https://github.com/tmyt/mastodon-dev-proxy.git
+    image: dev-proxy
+    restart: always
+    networks:
+      - external_network
+      - internal_network
+    ports:
+      - '127.0.0.1:8080:80'
+    volumes:
+      - ./public:/home/mastodon/live/public:ro
